@@ -42,13 +42,53 @@ namespace DiamondKata.Tests
     public class DiamondTests
     {
         [Fact]
-        public void GenerateSingleLine_ShouldFail()
+        public void GenerateSingleLine_ShouldIngnorePaddingMiddleWhenInputIs_A()
         {
             //Arrange 
             const string expectedResult = "   A";
 
             //Act
             string sut = Diamond.GenerateSingleLine(3, 'A', 3);
+
+            //Assert
+            sut.ShouldBe(expectedResult);
+        }
+
+
+        [Fact]
+        public void GenerateSingleLine_ShouldSucceddWhenInutIs_B()
+        {
+            //Arrange 
+            const string expectedResult = "  B B";
+
+            //Act
+            string sut = Diamond.GenerateSingleLine(2, 'B', 1);
+
+            //Assert
+            sut.ShouldBe(expectedResult);
+        }
+
+        [Fact]
+        public void GenerateSingleLine_ShouldSucceddWhenInutIs_C()
+        {
+            //Arrange 
+            const string expectedResult = " C   C";
+
+            //Act
+            string sut = Diamond.GenerateSingleLine(1, 'C', 3);
+
+            //Assert
+            sut.ShouldBe(expectedResult);
+        }
+
+        [Fact]
+        public void GenerateSingleLine_ShouldSucceddWhenInutIs_D()
+        {
+            //Arrange 
+            const string expectedResult = "D     D";
+
+            //Act
+            string sut = Diamond.GenerateSingleLine(0, 'D', 5);
 
             //Assert
             sut.ShouldBe(expectedResult);

@@ -14,7 +14,14 @@ namespace DiamondKata
 
         public static string GenerateSingleLine(int paddingLeft, int character, int paddingMiddle)
         {
-            throw new NotImplementedException();
+            var letter = Convert.ToChar(character);
+            var line = string.Empty.PadLeft(paddingLeft, PaddingChar) + letter;
+
+            if (letter != FirstLetter)
+            {
+                line += string.Empty.PadLeft(paddingMiddle, PaddingChar) + letter;
+            }
+            return line;
         }
 
         public static List<string> GenerateHalfDiamond(char middleCharacter)
