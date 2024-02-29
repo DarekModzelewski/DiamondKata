@@ -95,7 +95,28 @@ namespace DiamondKata.Tests
         }
 
         [Fact]
-        public void GenerateHalfDiamond_ShouldFail()
+        public void GenerateHalfDiamond_ShouldFailWhenArgumentIsOutOfRange()
+        {
+            Should.Throw<ArgumentOutOfRangeException>(() => Diamond.GenerateHalfDiamond('!'));
+        }
+
+        [Fact]
+        public void GenerateHalfDiamond_ShouldSucceddWhenInutIs_A()
+        {
+            //Arrange 
+            const char param = 'A';
+
+            //Act
+            List<string> sut = Diamond.GenerateHalfDiamond(param);
+
+            //Assert
+            sut.ShouldNotBeNull();
+            sut.Count.ShouldBe(1);
+            sut.ElementAt(0).ShouldBe(param.ToString());
+        }
+
+        [Fact]
+        public void GenerateHalfDiamond_ShouldSucceddWhenInutIs_B()
         {
             //Arrange 
             const char param = 'B';
@@ -108,6 +129,41 @@ namespace DiamondKata.Tests
             sut.Count.ShouldBe(2);
             sut.ElementAt(0).ShouldBe(" A");
             sut.ElementAt(1).ShouldBe("B B");
+        }
+
+        [Fact]
+        public void GenerateHalfDiamond_ShouldSucceddWhenInutIs_C()
+        {
+            //Arrange 
+            const char param = 'C';
+
+            //Act
+            List<string> sut = Diamond.GenerateHalfDiamond(param);
+
+            //Assert
+            sut.ShouldNotBeNull();
+            sut.Count.ShouldBe(3);
+            sut.ElementAt(0).ShouldBe("  A");
+            sut.ElementAt(1).ShouldBe(" B B");
+            sut.ElementAt(2).ShouldBe("C   C");
+        }
+
+        [Fact]
+        public void GenerateHalfDiamond_ShouldSucceddWhenInutIs_D()
+        {
+            //Arrange 
+            const char param = 'D';
+
+            //Act
+            List<string> sut = Diamond.GenerateHalfDiamond(param);
+
+            //Assert
+            sut.ShouldNotBeNull();
+            sut.Count.ShouldBe(4);
+            sut.ElementAt(0).ShouldBe("   A");
+            sut.ElementAt(1).ShouldBe("  B B");
+            sut.ElementAt(2).ShouldBe(" C   C");
+            sut.ElementAt(3).ShouldBe("D     D");
         }
 
         [Fact]

@@ -26,7 +26,18 @@ namespace DiamondKata
 
         public static List<string> GenerateHalfDiamond(char middleCharacter)
         {
-            throw new NotImplementedException();
+            var lines = new List<string>();
+            int paddingLeft = middleCharacter - FirstLetter;
+            int length = paddingLeft + 1;
+            int paddingMiddle = 1;
+
+            foreach (var character in Enumerable.Range('A', middleCharacter + 1 - 'A'))
+            {
+                lines.Add(GenerateSingleLine(paddingLeft, character, paddingMiddle));
+
+                paddingMiddle = ++length - --paddingLeft - 2;
+            }
+            return lines;
         }
 
         public static string Create(char middleCharacter)
