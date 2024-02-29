@@ -42,7 +42,17 @@ namespace DiamondKata
 
         public static string Create(char middleCharacter)
         {
-            throw new NotImplementedException();
+            if (middleCharacter == FirstLetter)
+                return "A";
+
+            List<string> firstPart = GenerateHalfDiamond(middleCharacter);
+            List<string> secondPart = new List<string>(firstPart);
+            secondPart.Reverse();
+
+            string topHalf = string.Join(LineSeparator, firstPart);
+            string bottomHalf = string.Join(LineSeparator, secondPart.Skip(1));
+
+            return topHalf + LineSeparator + bottomHalf;
         }
     }
 }

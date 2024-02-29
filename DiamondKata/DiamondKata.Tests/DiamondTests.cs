@@ -167,7 +167,20 @@ namespace DiamondKata.Tests
         }
 
         [Fact]
-        public void Create_ShouldFail()
+        public void Create_ShouldReturnSingleCharacterWhenInputIs_A()
+        {
+            //Arrange 
+            const string expectedResult = "A";
+
+            //Act
+            string sut = Diamond.Create('A');
+
+            //Assert
+            sut.ShouldBe(expectedResult);
+        }
+
+        [Fact]
+        public void Create_ShouldSucceddWhenInputIs_B()
         {
             //Arrange
             const string expectedResult = " A\n" +
@@ -179,5 +192,42 @@ namespace DiamondKata.Tests
             //Assert
             sut.ShouldBe(expectedResult);
         }
+
+        [Fact]
+        public void Create_ShouldSucceddWhenInputIs_C()
+        {
+            //Arrange
+            const string expectedResult = "  A\n" +
+                                          " B B\n" +
+                                          "C   C\n" +
+                                          " B B\n" +
+                                          "  A";
+            //Act
+            string sut = Diamond.Create('C');
+
+            //Assert
+            sut.ShouldBe(expectedResult);
+        }
+
+
+        [Fact]
+        public void Create_ShouldSucceddWhenInputIs_D()
+        {
+            //Arrange
+            const string expectedResult = "   A\n" +
+                                          "  B B\n" +
+                                          " C   C\n" +
+                                          "D     D\n" +
+                                          " C   C\n" +
+                                          "  B B\n" +
+                                          "   A";
+
+            //Act
+            string sut = Diamond.Create('D');
+
+            //Assert
+            sut.ShouldBe(expectedResult);
+        }
+
     }
 }
